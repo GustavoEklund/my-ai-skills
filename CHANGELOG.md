@@ -8,6 +8,8 @@ que conta como MAJOR, MINOR e PATCH está definido em [CLAUDE.md](CLAUDE.md).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-09-21
+
 ### Added
 
 - `grilling`: entrevista em rodadas que pressiona um plano ou design até não
@@ -26,4 +28,5 @@ que conta como MAJOR, MINOR e PATCH está definido em [CLAUDE.md](CLAUDE.md).
 - Publicação como plugin do Claude Code, com o próprio repositório servindo de
   marketplace.
 
-[unreleased]: https://github.com/GustavoEklund/my-ai-skills/commits/main
+[unreleased]: https://github.com/GustavoEklund/my-ai-skills/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/GustavoEklund/my-ai-skills/releases/tag/v0.1.0

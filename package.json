@@ -1,6 +1,6 @@
 {
   "name": "my-ai-skills",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "description": "Gustavo Eklund's agent skills: versioned, linted, and shipped as a Claude Code plugin.",
