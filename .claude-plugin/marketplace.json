@@ -1,0 +1,15 @@
+{
+  "name": "gustavo-eklund-skills",
+  "description": "Skills de agente do Gustavo Eklund, publicadas a partir do próprio repositório.",
+  "owner": {
+    "name": "Gustavo Eklund",
+    "url": "https://github.com/GustavoEklund"
+  },
+  "plugins": [
+    {
+      "name": "gustavo-eklund-skills",
+      "source": "./",
+      "description": "Skills de agente do Gustavo Eklund."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "my-ai-skills",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gustavo Eklund's agent skills: versioned, linted, and shipped as a Claude Code plugin.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GustavoEklund/my-ai-skills.git"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "lint": "node scripts/lint.ts",
+    "index": "node scripts/index.ts",
+    "index:check": "node scripts/index.ts --check",
+    "check": "npm run lint && npm run index:check",
+    "link": "bash scripts/link.sh",
+    "release": "node scripts/release.ts"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "zod": "^4.1.12"
+  }
+}

@@ -1,0 +1,12 @@
+node_modules/
+*.log
+.DS_Store
+
+# Never commit credential-shaped files: this repository is public.
+.env
+.env.*
+*.key
+*.pem
+*token*
+*secret*
+*credential*
