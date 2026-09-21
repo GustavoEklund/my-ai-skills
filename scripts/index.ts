@@ -35,7 +35,7 @@ function readmeTables(skills: Skill[]): string {
     sections.push(
       `### ${bucket}`,
       '',
-      '| Skill | Invocação | Descrição |',
+      '| Skill | Invocation | Description |',
       '| --- | --- | --- |',
       ...inBucket.map((s) => `| [\`${s.name}\`](${s.dir}/SKILL.md) | ${invocationCell(s)} | ${cell(s.description)} |`),
       '',

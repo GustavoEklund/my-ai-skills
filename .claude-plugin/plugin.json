@@ -1,7 +1,7 @@
 {
   "name": "gustavo-eklund-skills",
   "version": "0.1.0",
-  "description": "Skills de agente do Gustavo Eklund: entrevistas que pressionam um plano antes de construir, e o ferramental para manter a coleção sem redundância.",
+  "description": "Gustavo Eklund's agent skills: interviews that pressure-test a plan before it gets built, plus the tooling that keeps the collection free of overlap.",
   "author": {
     "name": "Gustavo Eklund",
     "url": "https://github.com/GustavoEklund"

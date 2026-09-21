@@ -1,37 +1,43 @@
 # Changelog
 
-Todas as mudanças relevantes deste projeto são registradas neste arquivo.
+All notable changes to this project are recorded in this file.
 
-O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/) e o
-versionamento segue [Semantic Versioning](https://semver.org/lang/pt-BR/). O
-que conta como MAJOR, MINOR e PATCH está definido em [CLAUDE.md](CLAUDE.md).
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and
+the versioning follows [Semantic Versioning](https://semver.org/). What counts
+as MAJOR, MINOR and PATCH is defined in [CLAUDE.md](CLAUDE.md).
 
 ## [Unreleased]
 
+### Changed
+
+- Everything in the repository is written in English now, including the README,
+  this changelog, and the plugin manifests.
+
 ### Fixed
 
-- O corpo da Release no GitHub não inclui mais as link references do final do
-  `CHANGELOG.md`. A extração parava só na próxima versão, então a seção mais
-  recente arrastava tudo até o fim do arquivo.
+- The GitHub Release body no longer includes the link reference definitions
+  from the end of `CHANGELOG.md`. Extraction stopped only at the next version,
+  so the newest section dragged everything through to end of file.
 
 ## [0.1.0] - 2026-09-21
 
 ### Added
 
-- `grilling`: entrevista em rodadas que pressiona um plano ou design até não
-  sobrar decisão implícita. Modela o trabalho como grafo de decisões, pergunta
-  a fronteira inteira de uma vez com recomendação em cada pergunta, e fecha com
-  um resumo separando o que ficou decidido, assumido e em aberto.
-- `grill-me`: atalho de usuário (`/grill-me`) que delega para `grilling`.
-- `authoring-skills`: procedimento para adicionar, dividir, renomear ou
-  aposentar skills sem criar sobreposição com as que já existem.
-- Lint (`npm run lint`) sobre frontmatter, unicidade de nomes, regras de
-  atalho, tamanho de corpo, links, profundidade de referências, manifesto do
-  plugin, consistência de versão, formato do changelog e similaridade entre
-  descriptions.
-- Índice gerado (`npm run index`) em `CLAUDE.md` e `README.md`, com
-  `npm run index:check` no CI para impedir que ele fique desatualizado.
-- Publicação como plugin do Claude Code, com o próprio repositório servindo de
+- `grilling`: a round-based interview that pressure-tests a plan or design
+  until no decision is left implicit. Models the work as a graph of decisions,
+  asks the whole frontier at once with a recommendation attached to every
+  question, and closes with a summary separating what was settled, what was
+  assumed, and what stays open.
+- `grill-me`: a user-invoked entry point (`/grill-me`) delegating to
+  `grilling`.
+- `authoring-skills`: the procedure for adding, splitting, renaming or retiring
+  skills without creating overlap with the ones already there.
+- Lint (`npm run lint`) over frontmatter, name uniqueness, alias rules, body
+  length, links, reference depth, the plugin manifest, version agreement,
+  changelog shape, and similarity between descriptions.
+- A generated index (`npm run index`) in `CLAUDE.md` and `README.md`, with
+  `npm run index:check` in CI to keep it from going stale.
+- Publication as a Claude Code plugin, with the repository serving as its own
   marketplace.
 
 [unreleased]: https://github.com/GustavoEklund/my-ai-skills/compare/v0.1.0...HEAD

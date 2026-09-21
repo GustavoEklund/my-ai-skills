@@ -3,8 +3,8 @@
 Gustavo Eklund's agent skills. One skill per directory, versioned as a single
 collection, linted, and shipped as a Claude Code plugin.
 
-Skills are written in English. Human-facing documentation (`README.md`) is in
-Brazilian Portuguese. Do not mix the two inside one file.
+Everything here is written in English: skills, documentation, changelog
+entries, commit messages and code comments.
 
 ## Layout
 
