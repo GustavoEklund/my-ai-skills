@@ -8,6 +8,12 @@ que conta como MAJOR, MINOR e PATCH está definido em [CLAUDE.md](CLAUDE.md).
 
 ## [Unreleased]
 
+### Fixed
+
+- O corpo da Release no GitHub não inclui mais as link references do final do
+  `CHANGELOG.md`. A extração parava só na próxima versão, então a seção mais
+  recente arrastava tudo até o fim do arquivo.
+
 ## [0.1.0] - 2026-09-21
 
 ### Added
