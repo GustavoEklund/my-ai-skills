@@ -19,10 +19,15 @@ as MAJOR, MINOR and PATCH is defined in [CLAUDE.md](CLAUDE.md).
   record where a skill's text came from, the lint requires the upstream
   `LICENSE` beside it, and `npm run vendor:check` reports which vendored skills
   have fallen behind their upstream release.
+- `humanizing-pt-br`: applies the `humanizer` method to Brazilian Portuguese,
+  replacing the six patterns that do not survive the language change with
+  eleven the language actually produces, and carrying a voice sample of the
+  repository owner's writing.
 - Per-skill validators: a skill may ship `scripts/validate.ts` for invariants
   the repository lint cannot know about, and `npm run lint` runs it. `humanizer`
   uses one to keep its patterns numbered without gaps and its `§` references
-  resolving.
+  resolving; `humanizing-pt-br` uses one to check its `§` references against
+  `humanizer`'s numbering, which re-vendoring could change.
 
 ### Changed
 

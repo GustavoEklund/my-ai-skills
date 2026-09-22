@@ -20,6 +20,7 @@
   "skills": [
     "./skills/productivity/grill-me",
     "./skills/productivity/grilling",
-    "./skills/productivity/humanizer"
+    "./skills/productivity/humanizer",
+    "./skills/productivity/humanizing-pt-br"
   ]
 }

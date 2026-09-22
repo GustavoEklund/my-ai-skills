@@ -7,6 +7,7 @@ description: |
   language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."
 license: MIT
 metadata:
+  boundary: humanizing-pt-br covers Brazilian Portuguese; this one covers English prose.
   upstream: https://github.com/blader/humanizer
   upstream-version: 3.0.0
   source: Vendored from blader/humanizer v3.0.0, MIT, Copyright (c) 2025 Siqi Chen. Body unmodified; see LICENSE in this directory.
