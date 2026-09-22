@@ -38,6 +38,7 @@ read `SKILL.md` at startup: restart the agent after adding a skill.
 | --- | --- | --- |
 | [`grill-me`](skills/productivity/grill-me/SKILL.md) | `/grill-me` | Starts a grilling session, a relentless round-based interview that pressure-tests a plan or design before any of it gets built. |
 | [`grilling`](skills/productivity/grilling/SKILL.md) | model + `/grilling` | Interrogates the user about a plan, design, or decision until every branch is settled, asking batched rounds of numbered questions that each carry a recommended answer. Use when the user wants to pressure-test thinking before committing to it, or says grill me, poke holes in this, or challenge this plan. |
+| [`humanizer`](skills/productivity/humanizer/SKILL.md) | model + `/humanizer` | Rewrite AI-sounding text so it reads like the writer without changing what it says. Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dashes everywhere, inflated claims, sales language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."  |
 
 <!-- END SKILLS -->
 

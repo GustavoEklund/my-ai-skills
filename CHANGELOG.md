@@ -8,6 +8,22 @@ as MAJOR, MINOR and PATCH is defined in [CLAUDE.md](CLAUDE.md).
 
 ## [Unreleased]
 
+### Added
+
+- `humanizer`: rewrites AI-sounding prose so it reads like the writer without
+  changing what it says, working from 25 numbered tells grouped by the default
+  choice each one represents. Vendored from
+  [blader/humanizer](https://github.com/blader/humanizer) v3.0.0 (MIT), body
+  unmodified.
+- Vendoring convention: `metadata.upstream` and `metadata.upstream-version`
+  record where a skill's text came from, the lint requires the upstream
+  `LICENSE` beside it, and `npm run vendor:check` reports which vendored skills
+  have fallen behind their upstream release.
+- Per-skill validators: a skill may ship `scripts/validate.ts` for invariants
+  the repository lint cannot know about, and `npm run lint` runs it. `humanizer`
+  uses one to keep its patterns numbered without gaps and its `§` references
+  resolving.
+
 ### Changed
 
 - Everything in the repository is written in English now, including the README,

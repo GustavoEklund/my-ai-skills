@@ -1,3 +1,4 @@
+import { execFileSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { join, normalize as normalizePath } from 'node:path'
 import { z } from 'zod'
@@ -33,6 +34,8 @@ const metadataSchema = z.strictObject({
   'delegates-to': z.string().optional(),
   boundary: z.string().optional(),
   source: z.string().optional(),
+  upstream: z.string().optional(),
+  'upstream-version': z.union([z.string(), z.number()]).optional(),
 })
 
 const frontmatterSchema = z
@@ -145,6 +148,38 @@ for (const skill of skills) {
 
   const total = skill.body.split('\n').length
   if (total > MAX_BODY_LINES) error(skill.file, `body is ${total} lines, max ${MAX_BODY_LINES}: split it into reference files`)
+}
+
+// --- vendored skills -------------------------------------------------------
+
+for (const skill of skills) {
+  if (skill.upstream === undefined && skill.upstreamVersion === undefined) continue
+  if (skill.upstream === undefined || skill.upstreamVersion === undefined) {
+    error(skill.file, '`metadata.upstream` and `metadata.upstream-version` go together: one without the other cannot be checked for drift')
+  }
+  // Vendoring a substantial portion of someone else's text without shipping
+  // their notice is the mistake that matters here, so it is an error.
+  if (!exists(`${skill.dir}/LICENSE`)) {
+    error(skill.file, `declares \`metadata.upstream\` but ${skill.dir}/LICENSE is missing: ship the upstream notice alongside the text`)
+  }
+}
+
+// --- per-skill validators --------------------------------------------------
+
+// A skill may carry invariants this lint cannot know about. If it ships
+// `scripts/validate.ts`, that script owns them and its exit code is ours.
+for (const skill of skills) {
+  const validator = `${skill.dir}/scripts/validate.ts`
+  if (!exists(validator)) continue
+  try {
+    execFileSync('node', [join(ROOT, validator)], { cwd: ROOT, encoding: 'utf8', stdio: 'pipe' })
+  } catch (failure) {
+    const output = String((failure as { stderr?: string; stdout?: string }).stderr ?? '').trim()
+    const detail = output === '' ? String((failure as { stdout?: string }).stdout ?? '').trim() : output
+    for (const line of (detail || 'validator exited non-zero with no output').split('\n')) {
+      error(validator, line)
+    }
+  }
 }
 
 // --- links and reference depth --------------------------------------------

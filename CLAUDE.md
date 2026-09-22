@@ -65,9 +65,40 @@ defines as free-form and every harness ignores:
 - `metadata.boundary` — one sentence naming the nearest skill and the rule that
   divides them. Required once the overlap check flags a pair.
 - `metadata.source` — attribution when the method came from someone else.
+- `metadata.upstream` and `metadata.upstream-version` — the repository a
+  vendored skill's text came from, and the release it was taken at. They go
+  together, and they are what `npm run vendor:check` reads.
 
 Everything else must be a field Claude Code actually supports. `npm run lint`
 rejects unknown keys, which is how typos get caught.
+
+## Vendored skills
+
+A skill whose text came from another repository declares `metadata.upstream`
+and `metadata.upstream-version`, and carries that project's `LICENSE` in its own
+directory. The lint enforces both: vendoring a substantial portion of someone
+else's work without shipping their notice is the failure worth catching.
+
+Keep the vendored body byte-identical to upstream and confine local changes to
+the frontmatter. A modified body cannot be diffed against a new release, which
+is the whole reason the version is recorded.
+
+`npm run vendor:check` asks each upstream for its latest release and reports
+what has fallen behind. It stays out of CI: it needs the network, and a new
+upstream release is news to act on, not a build to break. To update one,
+re-vendor the body, bump `metadata.upstream-version`, re-run the checks, and
+record it in the changelog under `Changed`.
+
+## Per-skill validators
+
+A skill with invariants this repository's lint cannot know about ships
+`scripts/validate.ts` in its own directory. `npm run lint` discovers it, runs
+it, and reports a non-zero exit as its own errors.
+
+Use it for rules that are true of one skill and meaningless elsewhere: a
+numbered sequence that must have no gaps, cross-references that must resolve, a
+line budget tighter than the repository's. Rules that would apply to any skill
+belong in `scripts/lint.ts` instead.
 
 ## Skill index
 
@@ -82,6 +113,7 @@ trigger surface against every Description here.
 | [`authoring-skills`](skills/meta/authoring-skills/SKILL.md) | meta | content | model + `/authoring-skills` | Adds, splits, renames, or retires a skill in the my-ai-skills repository without creating overlap with the skills already there. Use when working inside this repository and a skill needs to be created, changed, merged, or removed. | — |
 | [`grill-me`](skills/productivity/grill-me/SKILL.md) | productivity | alias → `grilling` | `/grill-me` | Starts a grilling session, a relentless round-based interview that pressure-tests a plan or design before any of it gets built. | — |
 | [`grilling`](skills/productivity/grilling/SKILL.md) | productivity | content | model + `/grilling` | Interrogates the user about a plan, design, or decision until every branch is settled, asking batched rounds of numbered questions that each carry a recommended answer. Use when the user wants to pressure-test thinking before committing to it, or says grill me, poke holes in this, or challenge this plan. | — |
+| [`humanizer`](skills/productivity/humanizer/SKILL.md) | productivity | content | model + `/humanizer` | Rewrite AI-sounding text so it reads like the writer without changing what it says. Use when editing or reviewing prose for AI tells: not-X-but-Y contrasts, one-line closers, staged openers, forced triads, dashes everywhere, inflated claims, sales language, stock AI words, bold labels, or filler. Based on Wikipedia's "Signs of AI writing."  | — |
 
 <!-- END SKILLS -->
 
@@ -138,6 +170,8 @@ Never edit released changelog sections. Corrections go in a new version.
   between content skills.
 - `npm run index:check` — fails when the generated index no longer matches the
   filesystem. An index that lies is worse than no index.
+
+`npm run vendor:check` is run by hand, for the reason given above.
 
 Run `claude plugin validate . --strict` after touching anything in
 `.claude-plugin/`. It stays out of CI because the CLI is not available there.

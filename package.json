@@ -17,6 +17,7 @@
     "index": "node scripts/index.ts",
     "index:check": "node scripts/index.ts --check",
     "check": "npm run lint && npm run index:check",
+    "vendor:check": "node scripts/vendor-check.ts",
     "link": "bash scripts/link.sh",
     "release": "node scripts/release.ts"
   },

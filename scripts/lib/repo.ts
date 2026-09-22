@@ -28,6 +28,9 @@ export type Skill = {
   description: string
   delegatesTo: string | undefined
   boundary: string | undefined
+  /** Set when the skill's text came from another repository, so drift can be tracked. */
+  upstream: string | undefined
+  upstreamVersion: string | undefined
   isAlias: boolean
   isPromoted: boolean
   invocation: Invocation
@@ -84,6 +87,8 @@ export function loadSkill(file: string): Skill {
     description: typeof fm.description === 'string' ? fm.description : '',
     delegatesTo: typeof delegatesTo === 'string' ? delegatesTo : undefined,
     boundary: typeof metadata.boundary === 'string' ? metadata.boundary : undefined,
+    upstream: typeof metadata.upstream === 'string' ? metadata.upstream : undefined,
+    upstreamVersion: metadata['upstream-version'] === undefined ? undefined : String(metadata['upstream-version']),
     isAlias: typeof delegatesTo === 'string',
     isPromoted: (PROMOTED_BUCKETS as readonly string[]).includes(segments[1] ?? ''),
     invocation: invocationOf(fm),

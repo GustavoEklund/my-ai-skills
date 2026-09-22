@@ -10,13 +10,16 @@
   "repository": "https://github.com/GustavoEklund/my-ai-skills",
   "license": "MIT",
   "keywords": [
-    "skills",
-    "productivity",
+    "design-review",
+    "editing",
     "planning",
-    "design-review"
+    "productivity",
+    "skills",
+    "writing"
   ],
   "skills": [
     "./skills/productivity/grill-me",
-    "./skills/productivity/grilling"
+    "./skills/productivity/grilling",
+    "./skills/productivity/humanizer"
   ]
 }
